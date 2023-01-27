@@ -48,6 +48,63 @@ function seriesSum(n) {
   return n === 0 ? '0.00' : parseFloat(sum).toFixed(2).toString()
 }
 // console.log(seriesSum(1)); // 1.00
-seriesSum(1)
-console.log(typeof seriesSum(1), seriesSum(1)) // 1.25
-console.log(seriesSum(5)) // 1.57
+// seriesSum(1)
+// console.log(typeof seriesSum(1), seriesSum(1)) // 1.25
+// console.log(seriesSum(5)) // 1.57
+
+// --- KATA: Friend or Foe?
+
+//Make a program that filters a list of strings and returns a list with only your friends name in it.
+
+// If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+// Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+// i.e.
+
+// friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+// Note: keep the original order of the names in the output.
+
+const f = ['Ryan', 'Kieran', 'Mark']
+
+function areFriend(arr) {
+  return arr.filter((n) => n.length === 4)
+}
+
+// console.log('friends', areFriend(f))
+
+// diff way of solving a problem
+const friend = (friends) => friends.filter((friend) => friend.length == 4)
+// console.log('friends', friend(f))
+
+// --- Consecutive strings
+
+// You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+
+let strarr = [
+  'zone',
+  'abigail',
+  'theta',
+  'form',
+  'libe',
+  'zas',
+  'theta',
+  'abigail',
+]
+
+function longestConsec(strarr, k) {
+  if (strarr.length === 0 || k > strarr.length || k <= 0) {
+    let emptyStr = ''
+    return emptyStr
+  } else {
+    let longest = ''
+    for (let i = 0; i <= strarr.length - k; i++) {
+      let current = strarr.slice(i, i + k).join('')
+      if (current.length > longest.length) {
+        longest = current
+      }
+      return longest
+    }
+  }
+}
+console.log(longestConsec(strarr, 5))
